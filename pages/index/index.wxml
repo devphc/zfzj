@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="bindViewB" class="indexB">
+    <text class="index-name">B端</text>
+  </view>
+  <view bindtap="bindViewC" class="indexC">
+    <text class="index-name">C端</text>
+  </view>
+</view>

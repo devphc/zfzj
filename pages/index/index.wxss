@@ -1,0 +1,21 @@
+/**index.wxss**/
+.indexB {
+  width: 100%;
+  height: 550rpx;
+  line-height: 550rpx;
+  text-align: center;
+  border-bottom:1px #fff solid;
+  background: #ddd; 
+}
+
+.indexC {
+  width: 100%;
+  height: 550rpx;
+  line-height: 550rpx;
+  text-align: center;
+  background: #ddd; 
+}
+
+.index-name {
+  font-size: 28px;
+}
