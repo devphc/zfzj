@@ -53,15 +53,64 @@
 
 
       <view class="row-wrap">
-        <view class="label">身份证照片</view>
+        <view class="labe">身份证正面照片示例</view>
       </view>
 
-      <view wx:if="{{url}}">
-        <image bindtap="gotoShow" class="show-image" mode="aspectFitf" src="{{url}}"></image>
+      <view class="show-image">
+        <image mode="aspectFit" src="../../images/index/WechatIMG98.jpeg" />
       </view>
 
-      <view wx:else>
-        <button type="default" bindtap="gotoShow">点击上传照片</button>
+      <view class="row-wrap">
+        <view class="labe">身份证正面照片</view>
+      </view>
+
+      <view class="show-image" wx:if="{{url}}">
+        <image bindtap="gotoShow" mode="aspectFitf" src="{{url}}"></image>
+      </view>
+
+      <view bindtap="gotoShow" class="uploadimg" wx:else>
+        点击上传身份证正面照片
+      </view>
+
+
+      <view class="row-wrap">
+        <view class="labe">身份证反面照片示例</view>
+      </view>
+
+      <view class="show-image">
+        <image mode="aspectFit" src="../../images/index/WechatIMG99.jpeg" />
+      </view>
+
+      <view class="row-wrap">
+        <view class="labe">身份证反面照片</view>
+      </view>
+
+      <view class="show-image" wx:if="{{backUrl}}">
+        <image bindtap="gotoShowBack" mode="aspectFitf" src="{{backUrl}}"></image>
+      </view>
+
+      <view bindtap="gotoShowBack" class="uploadimg" wx:else>
+        点击上传手持身份证照片
+      </view>
+
+      <view class="row-wrap">
+        <view class="labe">身份证手持照片示例</view>
+      </view>
+
+      <view class="show-image">
+        <image mode="aspectFit" src="../../images/index/WechatIMG100.jpeg" />
+      </view>
+
+      <view class="row-wrap">
+        <view class="labe">身份证手持照片</view>
+      </view>
+
+      <view class="show-image" wx:if="{{headUrl}}">
+        <image bindtap="gotoShowSc" mode="aspectFitf" src="{{headUrl}}"></image>
+      </view>
+
+      <view bindtap="gotoShowSc" class="uploadimg" wx:else>
+        点击上传身份证手持照片
       </view>
 
       <view class="row-wrap">

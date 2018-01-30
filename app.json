@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/category/index",
     "pages/goods-details/index",
@@ -10,42 +10,39 @@
     "pages/order-list/index",
     "pages/order-details/index",
     "pages/wuliu/index",
-    "pages/personal/index",
-    
-    "pages/indexs/index",
-    "pages/categorys/index",
-    "pages/goods-detailss/index",
-    "pages/shop-carts/index",
-    "pages/to-pay-orders/index",
-    "pages/select-addresss/index",
-    "pages/address-adds/index",
-    "pages/order-lists/index",
-    "pages/order-detailss/index",
-    "pages/wulius/index",
-    "pages/personals/index"
+    "pages/personal/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#e64340",
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "box-shadow":"0 0 6px 0",
-    "list": [{
-     "pagePath": "pages/index/index",
-      "iconPath": "images/nav/home-off.png",
-      "selectedIconPath": "images/nav/home-on.png",
-      "text": "b首页"
-    },{
-      "pagePath": "pages/personal/index",
-      "iconPath": "images/nav/home-off.png",
-      "selectedIconPath": "images/nav/home-on.png",
-      "text": "b个人中心"
-    }]
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/category/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shop-cart/index",
+        "iconPath": "images/nav/cart-off.png",
+        "selectedIconPath": "images/nav/cart-on.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/personal/index",
+        "iconPath": "images/nav/personal-off.png",
+        "selectedIconPath": "images/nav/personal-on.png",
+        "text": "个人中心"
+      }
+    ]
   }
 }

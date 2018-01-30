@@ -18,14 +18,5 @@ Page({
       // TODO to login
       console.log('请先去登陆');
     }
-  },
-  bindViewC: function () {
-    wx.switchTab({
-      url: '../categorys/index'
-    })
-    // wx.navigateTo({
-    //   url: '../categorys/index'
-    // })
-  },
-
+  }
 })

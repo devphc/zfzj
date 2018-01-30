@@ -1,3 +1,24 @@
 {
-   "navigationBarTitleText": "支付云之家"
+   "navigationBarTitleText": "支付云之家",
+   "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "b首页"
+      },
+      {
+        "pagePath": "pages/personal/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "b个人中心"
+      }
+    ]
+  }
 }

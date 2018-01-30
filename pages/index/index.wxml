@@ -1,12 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view bindtap="bindViewB" class="indexB">
-    <image style="width:100%;height:50vh" mode="aspectFit" src="../../images/index/WechatIMG375.png" />
+    <image style="width:100%;height:90vh" mode="aspectFit" src="../../images/index/WechatIMG375.png" />
+  </view>
+  <view class="indexTit">
+    <text class="index-name">为支付人服务！</text>
   </view>
 
-  <view bindtap="bindViewC" class="indexB">
+  <!-- <view bindtap="bindViewC" class="indexB">
     <image style="border-top:1px #fff solid;width:100%;height:50vh" mode="aspectFit" src="../../images/index/WechatIMG559.png" />
-  </view>
+  </view> -->
   <!-- <view bindtap="bindViewC" class="indexC">
     <text class="index-name">用户</text>
   </view> -->

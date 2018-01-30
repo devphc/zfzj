@@ -100,6 +100,5 @@ App({
     userInfo: null,
     subDomain: "mall",
     domain: "https://b.wfcschool.com",
-    domains: "https://c.wfcschool.com",
   }
 })

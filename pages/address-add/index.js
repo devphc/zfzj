@@ -14,6 +14,8 @@ Page({
     selDistrictIndex: 0,
     addressData: {},
     url: '',
+    backUrl: '',
+    headUrl: '',
     id: '',
   },
 
@@ -27,49 +29,35 @@ Page({
         console.log(res)
         var tempFilePaths = res.tempFilePaths
         upload(that, tempFilePaths);
-        // wx.uploadFile({
-        //   url: app.globalData.domain + '/api/fileupload/uploadIdCard',
-        //   filePath: tempFilePaths[0],
-        //   name: 'file',
-        //   formData: {
-        //     'user': 'test'
-        //   },
-        //   success: function (res) {
-        //     console.log('upload file', res)
-        //     var data = res.data
-        //     console.log('data',data)
-        //     that.setData({
-        //       name: data.name,
-        //       num:  data.num,
-        //       src: data.url,
-        //     })
-        //     console.log(that.data.name)
-        //     //do something
-        //   },
-        //   fail: function (e) {
-        //     // fail
-        //     console.log(e.errMsg)
-        //   },
-        //   complete: function (e) {
-        //     // complete
-        //     console.log(e)
-
-        //   }
-        // })
-        // that.setData({
-        //   src: res.tempFilePaths,
-        //   name: res.name,
-        //   num: res.num,
-        // })
       },
-      // fail: function (e) {
-      //   // fail
-      //   console.log(e.errMsg)
-      // },
-      // complete: function (e) {
-      //   // complete
-      //   console.log(e.errMsg)
-      // }
+    })
+  },
+
+  gotoShowBack: function () {
+    let that = this
+    wx.chooseImage({
+      count: 9, // 最多可以选择的图片张数，默认9
+      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      success: function (res) {
+        console.log(res)
+        var tempFilePaths = res.tempFilePaths
+        uploadBack(that, tempFilePaths);
+      },
+    })
+  },
+
+  gotoShowSc: function () {
+    let that = this
+    wx.chooseImage({
+      count: 9, // 最多可以选择的图片张数，默认9
+      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      success: function (res) {
+        console.log(res)
+        var tempFilePaths = res.tempFilePaths
+        uploadSc(that, tempFilePaths);
+      },
     })
   },
 
@@ -321,6 +309,7 @@ Page({
 
 function upload(page, path) {
   var that = this
+  var loginToken = app.globalData.token
   wx.showToast({
     icon: "loading",
     title: "正在上传"
@@ -329,7 +318,7 @@ function upload(page, path) {
       url: app.globalData.domain + '/api/fileupload/uploadIdCard',
       filePath: path[0],
       name: 'file',
-      header: { "Content-Type": "multipart/form-data" },
+      header: { token: loginToken },
       formData: {
         'user': 'test'
       },
@@ -348,6 +337,94 @@ function upload(page, path) {
           url: data.url,
           name: data.name,
           num: data.num,
+        });
+      },
+      fail: function (e) {
+        console.log(e);
+        wx.showModal({
+          title: '提示',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+      complete: function () {
+        wx.hideToast();  //隐藏Toast
+      }
+    })
+}
+
+function uploadBack(page, path) {
+  var that = this
+  var loginToken = app.globalData.token
+  wx.showToast({
+    icon: "loading",
+    title: "正在上传"
+  }),
+    wx.uploadFile({
+    url: app.globalData.domain + '/api/fileupload/uploadIdCardBack',
+      filePath: path[0],
+      name: 'file',
+      header: { token: loginToken },
+      formData: {
+        'user': 'test'
+      },
+      success: function (res) {
+        if (res.statusCode != 200) {
+          wx.showModal({
+            title: '提示',
+            content: '上传失败',
+            showCancel: false
+          })
+          return;
+        }
+        var data = JSON.parse(res.data);
+        console.log(data);
+        page.setData({  //上传成功修改显示头像
+          backUrl: data.backUrl,
+        });
+      },
+      fail: function (e) {
+        console.log(e);
+        wx.showModal({
+          title: '提示',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+      complete: function () {
+        wx.hideToast();  //隐藏Toast
+      }
+    })
+}
+
+function uploadSc(page, path) {
+  var that = this
+  var loginToken = app.globalData.token
+  wx.showToast({
+    icon: "loading",
+    title: "正在上传"
+  }),
+    wx.uploadFile({
+    url: app.globalData.domain + '/api/fileupload/uploadFacePic',
+      filePath: path[0],
+      name: 'file',
+      header: { token: loginToken },
+      formData: {
+        'user': 'test'
+      },
+      success: function (res) {
+        if (res.statusCode != 200) {
+          wx.showModal({
+            title: '提示',
+            content: '上传失败',
+            showCancel: false
+          })
+          return;
+        }
+        var data = JSON.parse(res.data);
+        console.log(data);
+        page.setData({  //上传成功修改显示头像
+          headUrl: data.headUrl,
         });
       },
       fail: function (e) {
