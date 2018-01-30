@@ -33,13 +33,13 @@ Page({
   },
   toDetailsTap: function (e) {
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/goods-detailss/index?id=" + e.currentTarget.dataset.id
     })
   },
   tapBanner: function (e) {
     if (e.currentTarget.dataset.id != 0) {
       wx.navigateTo({
-        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+        url: "/pages/goods-detailss/index?id=" + e.currentTarget.dataset.id
       })
     }
   },
@@ -69,11 +69,9 @@ Page({
     //     typeBorC: '?type=2'
     //   })
     // }
-    
     wx.setNavigationBarTitle({
       title: '支付云之家'
     })
-
     /*
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -84,7 +82,7 @@ Page({
     })
     */
     wx.request({
-      url: app.globalData.domain + '/api/banner/list',
+      url: app.globalData.domains + '/api/banner/list',
       success: function (res) {
         that.setData({
           banners: res.data.bannerList
@@ -92,7 +90,7 @@ Page({
       }
     })
     wx.request({
-      url: app.globalData.domain + '/api/category/list',
+      url: app.globalData.domains + '/api/category/list',
       success: function (res) {
         var categories = [{ categoryId: 0, categoryName: "全部" }];
         for (var i = 0; i < res.data.categoryList.length; i++) {
@@ -113,7 +111,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: app.globalData.domain + '/api/goods/list',
+      url: app.globalData.domains + '/api/goods/list',
       data: {
         categoryId: categoryId
       },

@@ -6,12 +6,9 @@ Page({
     userInfo: {}
   },
   //事件处理函数
-  bindViewB: function () {
+  bindViewB: function() {
     if (!app.userInfo) {
-      // wx.navigateTo({
-      //   url: '../category/index'
-      // })
-      wx.switchTab({
+      wx.navigateTo({
         url: '../category/index'
       })
     } else {
@@ -20,12 +17,9 @@ Page({
     }
   },
   bindViewC: function () {
-    wx.switchTab({
+    wx.navigateTo({
       url: '../categorys/index'
     })
-    // wx.navigateTo({
-    //   url: '../categorys/index'
-    // })
   },
-
+  
 })

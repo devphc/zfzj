@@ -4,14 +4,15 @@ App({
     var that = this;
     //  获取商城名称
     wx.request({
-      url: that.globalData.domain +'/api/settings/getInfo',
-      success: function(res) {
+      url: that.globalData.domain + '/api/settings/getInfo',
+      success: function (res) {
         wx.setStorageSync('mallName', res.data.settings.mallName);
       }
     })
     this.login();
   },
-  login : function () {
+
+  login: function () {
     var that = this;
     var token = that.globalData.token;
     if (token) {
@@ -32,11 +33,11 @@ App({
     wx.login({
       success: function (res) {
         wx.request({
-          url: that.globalData.domain +'/api/wechat/user/login',
+          url: that.globalData.domain + '/api/wechat/user/login',
           data: {
             code: res.code
           },
-          success: function(res) {
+          success: function (res) {
             if (res.data.code == 1) {
               that.globalData.sessionKey = res.data.sessionKey; //暂时，不应该在网络传输
               // 去注册
@@ -49,7 +50,7 @@ App({
               wx.showModal({
                 title: '提示',
                 content: '无法登录，请重试',
-                showCancel:false
+                showCancel: false
               })
               return;
             }
@@ -72,13 +73,13 @@ App({
             var signature = res.signature;
             // 下面开始调用注册接口
             wx.request({
-              url: that.globalData.domain +'/api/wechat/user/register',
-              data: { code: code, encryptedData: encryptedData, iv: iv, rawData: rawData, signature: signature, sessionKey: that.globalData.sessionKey}, // 设置请求的 参数
-              success: (res) =>{
-                if(res.data.code == 0){
+              url: that.globalData.domain + '/api/wechat/user/register',
+              data: { code: code, encryptedData: encryptedData, iv: iv, rawData: rawData, signature: signature, sessionKey: that.globalData.sessionKey }, // 设置请求的 参数
+              success: (res) => {
+                if (res.data.code == 0) {
                   wx.hideLoading();
                   that.login();
-                }else{
+                } else {
                   // 登录错误 
                   wx.hideLoading();
                   wx.showModal({
@@ -87,7 +88,7 @@ App({
                     showCancel: false
                   })
                 }
-                
+
               }
             })
           }
@@ -95,9 +96,10 @@ App({
       }
     })
   },
-  globalData:{
-    userInfo:null,
-    subDomain:"mall",
-    domain:"https://www.wfcschool.com"
+  globalData: {
+    userInfo: null,
+    subDomain: "mall",
+    domain: "https://b.wfcschool.com",
+    domains: "https://c.wfcschool.com",
   }
 })

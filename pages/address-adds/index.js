@@ -149,7 +149,7 @@ Page({
       apiAddid = 0;
     }
     wx.request({
-      url: app.globalData.domain + '/api/userAddress/' + apiAddoRuPDATE,
+      url: app.globalData.domains + '/api/userAddress/' + apiAddoRuPDATE,
       data: {
         token: app.globalData.token,
         id: apiAddid,
@@ -245,16 +245,16 @@ Page({
   },
   onLoad: function (e) {
     var that = this;
-    console.log(that)
-    if (that.options.type === 'B') {
-      that.setData({
-        typeBorC: '?type=1'
-      })
-    } else {
-      that.setData({
-        typeBorC: '?type=2'
-      })
-    }
+    // console.log(that)
+    // if (that.options.type === 'B') {
+    //   that.setData({
+    //     typeBorC: '?type=1'
+    //   })
+    // } else {
+    //   that.setData({
+    //     typeBorC: '?type=2'
+    //   })
+    // }
     this.initCityData(1);
     var id = e.id;
     that.data.id = id;
@@ -262,7 +262,7 @@ Page({
       // 初始化原数据
       wx.showLoading();
       wx.request({
-        url: app.globalData.domain + '/api/userAddress/detail',
+        url: app.globalData.domains + '/api/userAddress/detail',
         data: {
           token: app.globalData.token,
           id: id
@@ -302,7 +302,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.request({
-            url: app.globalData.domain + '/api/userAddress/delete',
+            url: app.globalData.domains + '/api/userAddress/delete',
             data: {
               token: app.globalData.token,
               id: id
@@ -326,7 +326,7 @@ function upload(page, path) {
     title: "正在上传"
   }),
     wx.uploadFile({
-      url: app.globalData.domain + '/api/fileupload/uploadIdCard',
+      url: app.globalData.domains + '/api/fileupload/uploadIdCard',
       filePath: path[0],
       name: 'file',
       header: { "Content-Type": "multipart/form-data" },
